@@ -24,10 +24,10 @@ class HomePage {
 
   async clickWallet() {
     const [popup] = await Promise.all([
-      this.page.waitForEvent('popup'),
-      this.wallet.click(),
+      this.page.waitForEvent('popup'), //waits for a new tab to open
+      this.wallet.click(), //click on selected product
     ]);
-    await popup.waitForLoadState();
+    await popup.waitForLoadState(); //new popup page to fully load
     return popup;
   }
 }

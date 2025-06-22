@@ -10,14 +10,14 @@ test('Verify navigation to similar items', async ({ page }) => {
   const searchKeyword = process.env.SEARCH_KEYWORD;
 
   const homePage = new HomePage(page, baseUrl, searchKeyword);
-  await homePage.goto();
-  await homePage.searchForProduct('wallet');
-
+  await homePage.goto(baseUrl);
+  await homePage.searchForProduct(searchKeyword);
   const productPopup = await homePage.clickWallet();
 
-  const productPage = new ProductPage(productPopup);
 
+  const productPage = new ProductPage(productPopup);
   const similarItemsPopup = await productPage.openSimilarItemsPage();
+
 
   const similarProdPage = new SimilarProdPage(similarItemsPopup);
   await similarProdPage.verifySimilarItemsHeader();

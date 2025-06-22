@@ -13,9 +13,6 @@ class SimilarProdPage {
   }
 
 async getSimilarItemsCount() {
-    await this.similarItemsHeader.waitFor({ state: 'visible', timeout: 15000 });
-    await this.page.waitForTimeout(1000); // optional wait for full render
-
     const count = await this.similarItemCards.count();
     await this.page.waitForTimeout(1000); // optional wait for full render
     console.log(`Total Similar Products:`,count);
