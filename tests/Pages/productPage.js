@@ -11,7 +11,6 @@ class ProductPage {
   await this.seeAllLink.waitFor({ state: 'visible', timeout: 30000 });
   await this.seeAllLink.scrollIntoViewIfNeeded();
 
-  // Wait for popup when clicking
   const [popup] = await Promise.all([
     this.page.waitForEvent('popup'),
     this.seeAllLink.click()
