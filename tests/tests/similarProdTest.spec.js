@@ -12,14 +12,12 @@ test('Verify navigation to similar items', async ({ page }) => {
   const homePage = new HomePage(page, baseUrl, searchKeyword);
   await homePage.goto(baseUrl);
   await homePage.searchForProduct(searchKeyword);
+  
   const productPopup = await homePage.clickWallet();
+  const productPage = new ProductPage(productPopup); //new tab
 
-
-  const productPage = new ProductPage(productPopup);
   const similarItemsPopup = await productPage.openSimilarItemsPage();
-
-
-  const similarProdPage = new SimilarProdPage(similarItemsPopup);
+  const similarProdPage = new SimilarProdPage(similarItemsPopup); //newtab
   await similarProdPage.verifySimilarItemsHeader();
   await similarProdPage.getSimilarItemsCount();
   
